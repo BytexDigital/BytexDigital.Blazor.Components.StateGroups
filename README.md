@@ -24,6 +24,12 @@ clicks a button and enable it again remotely from the server once work has been 
 <script src="_content/BytexDigital.Blazor.Components.StateGroups/main.js"></script>
 ```
 
+- \_Imports.razor
+
+```cshtml
+@using BytexDigital.Blazor.Components.StateGroups
+```
+
 ## Examples with explanations
 
 ### Button that disables itself
@@ -84,6 +90,56 @@ In this example, a button is placed inside a group whereas the button also displ
 ```
 
 ![](https://static.bytex.digital/github/BytexDigital.Blazor.Components.StateGroups/b42795e0be.gif)
+
+### Elements that are aware of what element triggered the UI to become busy
+
+Sometimes you only want to display an element when a specific other element was the cause of the UI going busy.
+An example is 2 buttons next to each other, both being able to do something, for example a "Save" and "Delete" button, but
+instead of displaying the spinner in them when any button is pressed, you only want the spinner to show when the button is pressed in which the spinner is.
+
+This can be done by utilizing `UseId(..)` and `ListenToId(..)`. 
+
+```cshtml
+<StateGroup @ref="_stateGroup">
+    <button @onclick="OnClick"
+            class="btn btn-success"
+            data-state-options="@StateElement.Conf().TriggerOnClick().DisableWhenBusy().UseId(1).Compile()">
+
+        <span class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+              data-state-options="@StateElement.Conf().ShowWhenBusy().ListenToId(1).Compile()"></span>
+
+        Save
+    </button>
+
+    <button @onclick="OnClick"
+            class="btn btn-danger"
+            data-state-options="@StateElement.Conf().TriggerOnClick().DisableWhenBusy().UseId(2).Compile()">
+
+        <span class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+              data-state-options="@StateElement.Conf().ShowWhenBusy().ListenToId(2).Compile()"></span>
+
+        Delete
+    </button>
+</StateGroup>
+
+@code {
+    private StateGroup _stateGroup;
+
+    private bool _cond = false;
+
+    public async Task OnClick()
+    {
+        await Task.Delay(1000);
+        await _stateGroup.SetIdleAsync();
+    }
+}
+```
+
+![](https://static.bytex.digital/github/BytexDigital.Blazor.Components.StateGroups/9f8dffd927.gif)
 
 ### Nested groups
 

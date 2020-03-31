@@ -9,9 +9,7 @@
 
 
 
-The library was specifically designed for server side Blazor and triggers directly on the client when an event occurs
- so the UI is adjusted instantly without latency to the server. This allows you to e.g. disable parts of the UI when the user
- clicks a button and enable it again remotely from the server once work has been completed.</Description>
+The library was specifically designed for server side Blazor and triggers directly on the client when an event occurs so the UI is adjusted instantly without latency to the server. This allows you to e.g. disable parts of the UI when the user clicks a button and enable it again remotely from the server once work has been completed.</Description>
     <Copyright>Bytex Digital UG (haftungsbeschränkt)</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/BytexDigital/BytexDigital.Blazor.Components.StateGroups</PackageProjectUrl>
