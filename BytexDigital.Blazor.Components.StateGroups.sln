@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BytexDigital.Blazor.Components.StateGroups", "BytexDigital.Blazor.Components.StateGroups\BytexDigital.Blazor.Components.StateGroups.csproj", "{1AF9D4E7-DC58-4F33-95F4-4FBB25A14F6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{F078C54D-4C0C-43A3-BE27-13C655669CBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{6EC348EE-9C4D-4C3C-8A33-12927518CBBB}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AF9D4E7-DC58-4F33-95F4-4FBB25A14F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AF9D4E7-DC58-4F33-95F4-4FBB25A14F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AF9D4E7-DC58-4F33-95F4-4FBB25A14F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AF9D4E7-DC58-4F33-95F4-4FBB25A14F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1AF9D4E7-DC58-4F33-95F4-4FBB25A14F6E} = {F078C54D-4C0C-43A3-BE27-13C655669CBE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F3B5620-6F24-4E31-AEF4-73432B47F2A9}
+	EndGlobalSection
+EndGlobal

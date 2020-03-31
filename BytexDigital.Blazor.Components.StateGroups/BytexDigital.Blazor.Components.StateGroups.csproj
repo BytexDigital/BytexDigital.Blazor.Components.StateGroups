@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <Authors>Ryan Torzynski</Authors>
+    <Company>Bytex Digital UG (haftungsbeschränkt)</Company>
+    <Description>This library provides functionality to group elements together and modify them on events to indicate a busy UI when performing work.
+
+
+
+The library was specifically designed for server side Blazor and triggers directly on the client when an event occurs
+ so the UI is adjusted instantly without latency to the server. This allows you to e.g. disable parts of the UI when the user
+ clicks a button and enable it again remotely from the server once work has been completed.</Description>
+    <Copyright>Bytex Digital UG (haftungsbeschränkt)</Copyright>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/BytexDigital/BytexDigital.Blazor.Components.StateGroups</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/BytexDigital/BytexDigital.Blazor.Components.StateGroups</RepositoryUrl>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>blazor forms ui state spinner loading</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove=".old" />
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorComponentUtilities" Version="1.6.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+
+</Project>

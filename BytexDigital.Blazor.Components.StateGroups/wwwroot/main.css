@@ -1,0 +1,7 @@
+﻿.stateindicator-hidden {
+    display: none;
+}
+
+.stateindicator-disabled {
+    pointer-events: none;
+}
