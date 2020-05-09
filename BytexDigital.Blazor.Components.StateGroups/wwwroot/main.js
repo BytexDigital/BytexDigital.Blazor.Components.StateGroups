@@ -354,7 +354,7 @@ var observer = new MutationObserver(function (mutations) {
         var nodes = mutation.addedNodes;
 
         if (nodes !== null) {
-            $(nodes).each(function () {
+            $(nodes.filter(x => x.hasAttribute("data-state-options"))).each(function () {
                 StateIndicators.SetupElementFromOptions($(this).get(0))
             });
         }
@@ -362,8 +362,6 @@ var observer = new MutationObserver(function (mutations) {
 });
 
 observer.observe(target, {
-    attributes: true,
     childList: true,
-    characterData: true,
     subtree: true
 });

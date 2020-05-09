@@ -18,6 +18,7 @@ The library was specifically designed for server side Blazor and triggers direct
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>blazor forms ui state spinner loading</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace BytexDigital.Blazor.Components.StateGroups
     public partial class StateGroup : ComponentBase
     {
         [Inject]
-        public IJSRuntime _jsRuntime { get; private set; }
+        public IJSRuntime JsRuntime { get; private set; }
 
         [Parameter]
         public RenderFragment ChildContent { get; set; }
@@ -20,6 +20,12 @@ namespace BytexDigital.Blazor.Components.StateGroups
         /// </summary>
         [Parameter]
         public bool InheritState { get; set; } = true;
+
+        /// <summary>
+        /// If set, will make this StateGroup available as a cascading parameter only under the given identifier.
+        /// </summary>
+        [Parameter]
+        public string? CascadeAs { get; set; }
 
         /// <summary>
         /// Explicitly defines which state group is the parent group defined by the id.
@@ -49,7 +55,7 @@ namespace BytexDigital.Blazor.Components.StateGroups
         /// <returns></returns>
         public async Task SetBusyAsync()
         {
-            await _jsRuntime.InvokeVoidAsync("StateIndicators.EnableGroup", null, Id);
+            await JsRuntime.InvokeVoidAsync("StateIndicators.EnableGroup", null, Id);
         }
 
         /// <summary>
@@ -58,7 +64,7 @@ namespace BytexDigital.Blazor.Components.StateGroups
         /// <returns></returns>
         public async Task SetIdleAsync()
         {
-            await _jsRuntime.InvokeVoidAsync("StateIndicators.DisableGroup", Id);
+            await JsRuntime.InvokeVoidAsync("StateIndicators.DisableGroup", Id);
         }
     }
 }
