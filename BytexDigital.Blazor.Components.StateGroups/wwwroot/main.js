@@ -1,6 +1,15 @@
 ﻿window.StateIndicators = {
     StateMemory: {},
 
+    SetupElementsIn: function (element) {
+        StateIndicators.SetupElementFromOptions($(element));
+
+        // Setup all children
+        $(element).find("[data-state-options]:not([data-state-ready])").each(function (i, e) {
+            StateIndicators.SetupElementFromOptions(e);
+        });
+    },
+
     SetupAllElements: function () {
         $("[data-state-options]").each(function (i, e) {
             StateIndicators.SetupElementFromOptions(e);
@@ -340,28 +349,38 @@
         }
 
         return result;
-    }
+    },
+
+    //InitObserver: function () {
+    //    // Setup a mutation observer to track changed DOM elements
+    //    var target = $("body")[0];
+
+    //    var observer = new MutationObserver(function (mutations) {
+    //        mutations.forEach(function (mutation) {
+    //            var nodes = mutation.addedNodes;
+
+    //            if (nodes !== null) {
+    //                $([...nodes].filter(x => {
+    //                    if (x.nodeType != 1) {
+    //                        return false;
+    //                    }
+
+    //                    return x.hasAttribute("data-state-options");
+    //                })).each(function () {
+    //                    console.log("stategroups.js added elements");
+
+    //                    StateIndicators.SetupElementFromOptions($(this).get(0))
+    //                });
+    //            }
+    //        });
+    //    });
+
+    //    observer.observe(target, {
+    //        attributes: true,
+    //        subtree: true
+    //    });
+    //}
 }
 
 // Setup all elements intially available
 StateIndicators.SetupAllElements();
-
-// Setup a mutation observer to track changed DOM elements
-var target = $("body")[0];
-
-var observer = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
-        var nodes = mutation.addedNodes;
-
-        if (nodes !== null) {
-            $(nodes.filter(x => x.hasAttribute("data-state-options"))).each(function () {
-                StateIndicators.SetupElementFromOptions($(this).get(0))
-            });
-        }
-    });
-});
-
-observer.observe(target, {
-    childList: true,
-    subtree: true
-});

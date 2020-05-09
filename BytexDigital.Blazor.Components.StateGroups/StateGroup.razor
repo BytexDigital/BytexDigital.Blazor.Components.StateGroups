@@ -1,4 +1,4 @@
-﻿<div data-state-options="@StateElement.Conf().IsGroupRoot().UseGroupId(Id).InheritGroupState().UseParentGroupId(ParentGroupId).Compile()">
+﻿<div data-state-options="@StateElement.Conf().IsGroupRoot().UseGroupId(Id).InheritGroupState().UseParentGroupId(ParentGroupId).Compile()" @ref="ElementReference">
     @if (CascadeAs != null)
     {
         <CascadingValue Name="@CascadeAs" Value="this">

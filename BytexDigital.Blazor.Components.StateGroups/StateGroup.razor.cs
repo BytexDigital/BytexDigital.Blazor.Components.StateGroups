@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BytexDigital.Blazor.Components.StateGroups.Common;
+using BytexDigital.Blazor.Components.StateGroups.Common.Interfaces;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
 using System.Threading.Tasks;
-using static BytexDigital.Blazor.Components.StateGroups.StateElement.StateIndicatorOptionsBuilder;
 
 namespace BytexDigital.Blazor.Components.StateGroups
 {
@@ -10,6 +11,10 @@ namespace BytexDigital.Blazor.Components.StateGroups
     {
         [Inject]
         public IJSRuntime JsRuntime { get; private set; }
+
+        [Inject]
+        public IStateGroupsService StateGroupsService { get; set; }
+
 
         [Parameter]
         public RenderFragment ChildContent { get; set; }
@@ -39,6 +44,8 @@ namespace BytexDigital.Blazor.Components.StateGroups
         [Parameter]
         public string Id { get; set; }
 
+        public ElementReference ElementReference { get; private set; }
+
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
@@ -47,6 +54,17 @@ namespace BytexDigital.Blazor.Components.StateGroups
             {
                 Id = Guid.NewGuid().ToString();
             }
+        }
+
+        protected override bool ShouldRender()
+        {
+            return true;
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await StateGroupsService.SetupElementsIn(ElementReference);
+            await base.OnAfterRenderAsync(firstRender);
         }
 
         /// <summary>
@@ -66,5 +84,14 @@ namespace BytexDigital.Blazor.Components.StateGroups
         {
             await JsRuntime.InvokeVoidAsync("StateIndicators.DisableGroup", Id);
         }
+
+        /// <summary>
+        /// Wires up event bindings in JS. If no mutation observer is used, this might need to be done manually when adding new state elements to the UI.
+        /// </summary>
+        /// <returns></returns>
+        //public async Task RefreshBindings()
+        //{
+        //    await StateGroupsService.RefreshBindings();
+        //}
     }
 }
